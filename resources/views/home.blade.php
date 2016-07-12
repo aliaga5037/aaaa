@@ -36,8 +36,15 @@
                             <hr>
                             <div class="capiton">
                                 @foreach($question->answers as $answer)
-                                <span>aga</span><br>
+                                <span>{{$answer->user_username}}</span><br>
                                 <span>{{$answer->cavab}}</span>
+                                <span class="pull-right">
+                                    @if (Auth::user()->id == $answer->user_id)
+                                        {{ Form::open(['method' => 'DELETE', 'url' => Auth::user()->id.'/answer/'.$answer->id]) }}
+                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                        {{ Form::close() }}
+                                    @endif
+                                </span>
                                 <hr>
                                 @endforeach
                                 <a href="/{{$question->id}}/answer" class="btn btn-default">Cavabla</a>

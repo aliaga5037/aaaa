@@ -59,7 +59,7 @@ class AnswerController extends Controller
         $answer = new Answer;
         $answer->cavab = $request->cavab;
         $answer->user_id = $user->id;
-        // $answer->user_username = $user->username;
+        $answer->user_username = $user->username;
         $ques->answers()->save($answer);
         return redirect("/home");
     }
@@ -104,8 +104,10 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($quesId,$id)
     {
-        //
+
+        $ques = Answer::findOrFail($id)->delete();
+        return back();
     }
 }

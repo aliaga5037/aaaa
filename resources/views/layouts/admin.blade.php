@@ -39,6 +39,7 @@
 									<li><a href="{{ url('/profile') }}"><i class="fa fa-btn "></i>Profil</a></li>
 									@if(Auth::user()->role == 'admin' || Auth::user()->role == 'muellim'  || Auth::user()->role == 'mentor')
 									<li><a href="{{ url('/adminPage') }}"><i class="fa fa-btn "></i>Admin page</a></li>
+									<li><a href="{{ url('') }}"><i class="fa fa-btn fa-sign-out"></i>Notifications</a></li>
 									@endif
 								</ul>
 							</li>
